@@ -2,7 +2,7 @@ module github.com/dreamware-nz/askuserquestion-go
 
 go 1.26.3
 
-require charm.land/fantasy v0.25.0
+require charm.land/fantasy v0.23.2
 
 require (
 	github.com/charmbracelet/x/exp/slice v0.0.0-20250904123553-b4e2667e5ad5 // indirect
