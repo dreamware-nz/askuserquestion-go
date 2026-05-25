@@ -25,6 +25,13 @@ const SDKToolName = "AskUserQuestion"
 type Params struct {
 	// Questions is the ordered list of questions to ask. 1-4 entries.
 	Questions []Question `json:"questions" description:"Questions to ask the user (1-4 questions)"`
+	// Context is an optional short hint shown to the user above the questions
+	// so they can see what work the questions belong to (e.g. project name,
+	// repo path, current task). It is opaque metadata: the library does not
+	// validate its content, and it never appears in the canonical answer
+	// string returned to the model. Hosts that render a UI should display it
+	// near the top of the picker; resolvers that don't render UI may ignore it.
+	Context string `json:"context,omitempty" description:"Optional short hint shown above the questions to remind the user what work the questions belong to (e.g. project name, repo path, current task). Free text, ~200 chars or less."`
 }
 
 // Question is a single question with multiple-choice options.
@@ -72,4 +79,8 @@ type Request struct {
 	ToolCallID string
 	// Questions is the validated question set.
 	Questions []Question
+	// Context is the optional hint copied from Params.Context. Resolvers that
+	// render a UI should surface it near the top of the picker; resolvers
+	// without a UI may ignore it.
+	Context string
 }

@@ -48,6 +48,7 @@ func NewToolNamed(name string, r Resolver) fantasy.AgentTool {
 			req := Request{
 				ToolCallID: call.ID,
 				Questions:  p.Questions,
+				Context:    p.Context,
 			}
 			answers, err := r.Ask(ctx, req)
 			if err != nil {
